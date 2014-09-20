@@ -1490,6 +1490,16 @@ a.thumbnail {
 	margin-bottom:6px;
 }
 
+.product-name, .product-name:hover{
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.product-description{
+	font-size: 15px;
+}
+
+
 /*Privacy Page
 ------------------------------------*/
 .privacy a {
