@@ -21,15 +21,17 @@
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">  
-    <link rel="stylesheet" href="assets/plugins/parallax-slider/css/parallax-slider.css">
+    <link rel="stylesheet" href="assets/plugins/flexslider/flexslider.css">     
+
+    <!-- CSS Page Style -->    
+    <link rel="stylesheet" href="assets/css/pages/page_contact.css">
 
     <!-- CSS Theme -->    
     <link rel="stylesheet" href="assets/css/themes/default.css" id="style_color">
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="assets/css/custom.css">
-</head>	
+</head> 
 
 <body>
 <!--=== Style Switcher ===-->    
@@ -60,6 +62,20 @@
 <!--=== End Style Switcher ===-->    
 
 <div class="wrapper">
+
+    <?php
+        function spamcheck($field) {
+          // Sanitize e-mail address
+          $field=filter_var($field, FILTER_SANITIZE_EMAIL);
+          // Validate e-mail address
+          if(filter_var($field, FILTER_VALIDATE_EMAIL)) {
+            return TRUE;
+          } else {
+            return FALSE;
+          }
+        }
+    ?>   
+
     <!--=== Header ===-->    
     <div class="header">
         <!-- Topbar -->
@@ -149,121 +165,85 @@
     </div>
     <!--=== End Header ===-->    
 
-    <!--=== Slider ===-->
-    <div class="slider-inner">
-        <div id="da-slider" class="da-slider">
-            <div class="da-slide">
-                <h2><i>Empowering </i> <br /> <i>Women </i> <br /> <i>Aritsans</i></h2>
-                <p><i>Art with a heart! Empowering women in India</i> <br /> <i>through technology, skill development and community </i></p>
-                <div class="da-img" ><img class="img-responsive" src="assets/plugins/parallax-slider/img/fotookpng.png" alt=""></div>
-            </div>
-
-            <div class="da-slide">
-                <h2><i>Handmade  </i> <br /> <i>with Love! </i></h2>
-                <p><i>Artisans learn skills to create beautiful products.</i> <br /> <i>Support a woman artisan by </i> <br /> <i> owning a unique handcrafted piece. </i></p>
-                <div class="da-img" ><img class="img-responsive" src="assets/plugins/parallax-slider/img/slider2.jpg" alt=""></div>
-            </div>
-
-            <div class="da-slide">
-                <h2><i>Heartfelt </i>  <br /> <i> Arts </i> </h2>
-                <p><i>Learn about who we are and what we do. </i> <br /></p>
-                <div class="da-img">
-                    <iframe src="https://www.youtube.com/embed/73MsE5h8xaw" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
-                </div>
-            </div>
-
-            <div class="da-slide">
-                <h2><i>Origami </i> <br /> <i> Fabric Wallets</i></h2>
-                <p><i>A cool wallet made with </i> <br /> <i> aesthetics, functionality and heart.</i></p>
-                <div class="da-img">
-                    <iframe src="https://www.youtube.com/embed/73MsE5h8xaw" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
-                </div>
-            </div>
-
-            <div class="da-arrows">
-                <span class="da-arrows-prev"></span>
-                <span class="da-arrows-next"></span>		
-            </div>
-        </div>
-    </div><!--/slider-->
-    <!--=== End Slider ===-->
-
-    <!--=== Purchase Block ===-->
-    <div class="purchase">
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
         <div class="container">
-            <div class="row">
-                <div class="col-md-9 animated fadeInLeft">
-                    <span>Women Empowerment Project!</span>
-                    <p>WE trained 4000+ Indian women over the span of two years
-in various artisan trades such as fabric painting, jewelry making and origami fabric products.</p>
-                </div>            
-                <div class="col-md-3 btn-buy animated fadeInRight">
-                    <a href="about.html" class="btn-u btn-u-lg"><i class="fa fa-cloud-download"></i>Learn More</a>
-                </div>
-            </div>
+            <h1 class="pull-left">Engage</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Engage</li>
+            </ul>
         </div>
-    </div><!--/row-->
-    <!-- End Purchase Block -->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
 
     <!--=== Content Part ===-->
-    <div class="container content">	
-    	
-    	<!-- End Service Blokcs -->
+    <div class="container content">     
+        <div class="row margin-bottom-30">
+            <div class="col-md-9 mb-margin-bottom-30">
+                <h3>
+                    To learn more about Heartfelt Arts or to engage with our mentorship program feel free to contact us through this form:
+                </h3>
+                <?php
+                    if (!isset($_POST["submit"])) {
+                ?>
+                  
+                <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                    <label>Name</label>
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-7 col-md-offset-0">
+                            <input type="text" class="form-control" name="username">
+                        </div>                
+                    </div>
+                    
+                    <label>Email <span class="color-red">*</span></label>
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-7 col-md-offset-0">
+                            <input type="text" class="form-control" name="from">
+                        </div>                
+                    </div>
+                    
+                    <label>Message</label>
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-11 col-md-offset-0">
+                            <textarea rows="8" class="form-control" name="message"></textarea>
+                        </div>                
+                    </div>
+                    
+                    <p><button type="submit" class="btn-u" name="submit">Send Message</button></p>
+                </form>
+                
+                <?php 
+                    } 
+                    else {  // the user has submitted the form
+                      // Check if the "from" input field is filled out
+                        if (isset($_POST["from"])) {
+                            // Check if "from" email address is valid
+                            $mailcheck = spamcheck($_POST["from"]);
+                            if ($mailcheck==FALSE) {
+                              echo "Please validate your Email ID";
+                            } 
+                            else {
+                              $username = $_POST["username"]; // sender
+                              $from = $_POST["from"]; // sender
+                              $subject = "New Message from HFA user: ";
+                              $message = $_POST["message"] . "\n-- end of message --";
+                              // message lines should not exceed 70 characters (PHP rule), so wrap it
+                              $message = wordwrap($message, 70);
+                              // send mail
+                              //mail("information@heartfeltarts.com",$subject,$message,"From: $from\n");
+                              mail("aishwarya923@gmail.com",$subject,$message,"From: $from\n");
+                              echo "Thank you for contacting us";
+                            }
+                        }
+                    }
+                ?>
+            </div><!--/col-md-9-->
+        
+        </div><!--/row-->        
+    </div><!--/container-->     
+    <!--=== End Content Part ===-->
 
-    	<!-- Recent Works -->
-        <div class="headline"><h2>Handicrafts: Buy now!</h2></div>
-        <div class="row margin-bottom-20">
-            <div class="col-md-4 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                	<div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="assets/img/main/product1.jpg" alt="">
-                        </div>
-                        <a class="btn-more hover-effect" href="origami-fabric-wallet.html">read more +</a>					
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="origami-fabric-wallet.html">Origami Fabric Wallets</a></h3>
-                        <p>Inspired by the traditional Japanese art of origami, these handmade one of a kind wallets are crafted from folded fabric and make a bold statement.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                    <div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="assets/img/main/product2.jpg" alt="">
-                        </div>
-                        <a class="btn-more hover-effect" href="wrap-bracelets.html">read more +</a>                   
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="wrap-bracelets.html">Wrap Bracelets</a></h3>
-                        <p>Beautifully handcrafted wraps are made from Indian beads handwoven onto various colored cotton threading. A range of glass crystals and semi precious pearls have been used to create various stylish designs.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="thumbnails thumbnail-style thumbnail-kenburn">
-                    <div class="thumbnail-img">
-                        <div class="overflow-hidden">
-                            <img class="img-responsive" src="assets/img/main/product3.jpg" alt="">
-                        </div>
-                        <a class="btn-more hover-effect" href="murals.html">read more +</a>                   
-                    </div>
-                    <div class="caption">
-                        <h3><a class="hover-effect" href="murals.html">Handpainted Traditional Murals</a></h3>
-                        <p>These vibrant and stunning handpainted murals were inspired by the ancient traditional art of Kerala most often found on the walls of temples, churches and palaces.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    	<!-- End Recent Works -->
-
-    	<!-- Info Blokcs -->
-    	
-    </div><!--/container-->		
-    <!-- End Content Part -->
-
-    
     <!--=== Footer ===-->
     <div class="footer">
         <div class="container">
@@ -321,31 +301,28 @@ in various artisan trades such as fabric painting, jewelry making and origami fa
     <!--=== End Copyright ===-->
 </div><!--/wrapper-->
 
-
-
-<!-- JS Global Compulsory -->			
+<!-- JS Global Compulsory -->           
 <script type="text/javascript" src="assets/plugins/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<!-- JS Implementing Plugins -->           
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="assets/plugins/gmap/gmap.js"></script>
 <script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script>
-<script type="text/javascript" src="assets/plugins/parallax-slider/js/modernizr.js"></script>
-<script type="text/javascript" src="assets/plugins/parallax-slider/js/jquery.cslider.js"></script>
 <!-- JS Page Level -->           
 <script type="text/javascript" src="assets/js/app.js"></script>
-<script type="text/javascript" src="assets/js/pages/index.js"></script>
+<script type="text/javascript" src="assets/js/pages/page_contacts.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-      	App.init();
+        App.init();
         App.initSliders();
-        Index.initParallaxSlider();        
     });
 </script>
 <!--[if lt IE 9]>
     <script src="assets/plugins/respond.js"></script>
-    <script src="assets/plugins/html5shiv.js"></script>    
+    <script src="assets/plugins/html5shiv.js"></script>
 <![endif]-->
 
 </body>
-</html>	
+</html> 
