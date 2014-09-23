@@ -68,7 +68,7 @@
                         <span class="fa fa-bars"></span>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img id="logo-header" src="assets/img/logo.png" alt="Logo">
+                        <img id="logo-header" src="assets/img/logo.jpg" alt="Logo">
                     </a>
                 </div>
 
