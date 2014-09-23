@@ -2567,7 +2567,8 @@ img.img-circle {
 .margin-bottom-45, 
 .margin-bottom-50, 
 .margin-bottom-55, 
-.margin-bottom-60 { 
+.margin-bottom-60,
+.margin-top-10 { 
    clear:both;
 }
 .margin-bottom-5  { margin-bottom:5px;}
@@ -2582,6 +2583,7 @@ img.img-circle {
 .margin-bottom-50 { margin-bottom:50px;}
 .margin-bottom-55 { margin-bottom:55px;}
 .margin-bottom-60 { margin-bottom:60px;}
+.margin-top-10 { margin-top:10px;}
 
 @media (max-width: 768px) {
   .sm-margin-bottom-10 {
