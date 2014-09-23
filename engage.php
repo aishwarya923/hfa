@@ -150,7 +150,7 @@
                         </li>
 
         
-                        <li>
+                        <li class="active">
                             <a href="engage.php">
                                 Engage
                             </a>
