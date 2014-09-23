@@ -232,7 +232,7 @@
                               $message = wordwrap($message, 70);
                               // send mail
                               //mail("information@heartfeltarts.com",$subject,$message,"From: $from\n");
-                              mail("aishwarya923@gmail.com",$subject,$message,"From: $from\n");
+                              mail("aiyer1008@gmail.com",$subject,$message,"From: $from\n");
                               echo "Thank you for contacting us";
                             }
                         }
